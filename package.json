@@ -1,0 +1,23 @@
+{
+  "name": "vue-pouchdb",
+  "version": "1.0.0",
+  "description": "Vue.js plugin for PouchDB",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BigBlueHat/vue-pouchdb.git"
+  },
+  "keywords": [
+    "Vue",
+    "PouchDB"
+  ],
+  "author": "BigBlueHat <byoung@bigbluehat.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BigBlueHat/vue-pouchdb/issues"
+  },
+  "homepage": "https://github.com/BigBlueHat/vue-pouchdb#readme"
+}
