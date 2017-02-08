@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/BigBlueHat/vue-pouchdb/issues"
   },
-  "homepage": "https://github.com/BigBlueHat/vue-pouchdb#readme"
+  "homepage": "https://github.com/BigBlueHat/vue-pouchdb#readme",
+  "dependencies": {
+    "uuid": "^3.0.1"
+  }
 }
