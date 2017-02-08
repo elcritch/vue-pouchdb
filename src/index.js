@@ -13,16 +13,13 @@ if ( typeof window !== 'undefined' && window.Vue ) {
  * Create a single PouchDB instance on all Vue VM's that have this plugin
  **/
 
-// function install( Vue ) {
-//    Vue.mixin( main.PouchMixin )
-// }
+function install( Vue ) {
+   Vue.mixin( main.PouchMixin )
+}
 
 var PouchMixin = main.Pouch
 
-export default {
-   PouchMixin,
-   install
-}
+exports.install = install;
 
 // exports.install = function ( Vue, options ) {
 //    Vue.prototype.$db = new PouchDB( options );
