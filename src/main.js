@@ -42,7 +42,8 @@ function bind( vm, key, source ) {
             .put( data )
             .then( function ( doc ) {
                // data[ '_rev' ] = doc.rev
-               vm[ key ][ uuid ] = doc
+               // vm[ key ][ uuid ] = doc
+               Vue.set( vm[ key ], uuid, doc );
                resolve( data )
             } )
             .catch( function ( err ) {
@@ -59,7 +60,8 @@ function bind( vm, key, source ) {
             .put( data )
             .then( function ( doc ) {
                // data[ '_rev' ] = doc.rev
-               vm[ key ][ uuid ] = doc
+               // vm[ key ][ uuid ] = doc
+               Vue.set( vm[ key ], uuid, doc );
                resolve( doc )
             } )
             .catch( function ( err ) {
@@ -105,12 +107,12 @@ function bind( vm, key, source ) {
                Vue.delete( vm[ key ], uuid )
             }
             else {
-               console.log( "SYNC: ", doc, vm[ key ][ uuid ] )
-                  // vm[ key ][ uuid ] = doc
+               // console.log( "SYNC: ", doc, vm[ key ][ uuid ] )
+               // vm[ key ][ uuid ] = doc
                Vue.set( vm[ key ], uuid, doc );
-               console.log( "SYNC:post: ", vm[ key ][ uuid ] )
-                  // defineReactive( vm, uuid, doc );
-                  // var uuid = doc[ '_id' ]
+               // console.log( "SYNC:post: ", vm[ key ][ uuid ] )
+               // defineReactive( vm, uuid, doc );
+               // var uuid = doc[ '_id' ]
             }
          } )
       } );
