@@ -1,5 +1,5 @@
 var PouchDB = require( 'pouchdb' );
-PouchDB.plugin( require( 'pouchdb-authentication' ) );
+// PouchDB.plugin( require( 'pouchdb-authentication' ) );
 
 var main = require( "./main" );
 
