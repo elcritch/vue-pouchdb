@@ -18,7 +18,7 @@ function install( Vue ) {
    Vue.mixin( main.PouchMixin )
 }
 
-var PouchMixin = main.Pouch
+var PouchMixin = main.PouchMixin
 
 exports.install = install;
 

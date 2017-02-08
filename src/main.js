@@ -145,4 +145,4 @@ var PouchMixin = {
 // }
 
 
-// export default PouchMixin
+export default PouchMixin
