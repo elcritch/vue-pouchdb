@@ -27,8 +27,9 @@ function defineReactive( vm, key, val ) {
 function bind( vm, key, source ) {
    var array = []
    defineReactive( vm, key, array )
-   var localDB = new PouchDB( source.localdb )
-   var remoteDB = new PouchDB( source.remoteURL )
+   var localDB = new PouchDB( source.localdb );
+
+   // var remoteDB = new PouchDB( source.remoteURL );
 
    vm.$db[ key ] = localDB
 
