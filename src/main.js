@@ -86,38 +86,52 @@ function bind( vm, key, source ) {
       } )
    }
 
-   // if ( remoteDB.active === true ) {
-   //    localDB.sync( remoteDB, {
-   //          live: true,
-   //          retry: true
-   //       } )
-   //       .on( 'change', function ( change ) {
+   var changes = localDB.changes( {
+      since: 0,
+      include_docs: true,
+      live: true
+   } ).on( 'change', function ( change ) {
+      console.log( "CHANGE: ", change );
+   } ).on( 'complete', function ( info ) {
+      // changes() was canceled
+      console.log( "change:canceled", info );
+   } ).on( 'error', function ( err ) {
+      console.log( "change:error: ", err );
+   } );
+
+   // // if ( remoteDB.active === true ) {
+   // localDB.changes( {
+   //       since: 0,
+   //       live: true
+   //    } )
+   //    .on( 'change', function ( change ) {
    //
-   //          var docs = change.change.docs
-   //             // TODO: Refactor docs check
+   //       var docs = change.change.docs
+   //          // TODO: Refactor docs check
+   //       console.log( "SYNC: ", change )
    //
-   //          docs.forEach( function ( doc ) {
-   //             var uuid = doc[ '_id' ]
-   //             if ( ( uuid in vm[ key ] ) ) {
-   //                if ( doc[ '_deleted' ] ) {
-   //                   Vue.delete( vm[ key ], uuid )
-   //                }
-   //                else {
-   //                   vm[ key ][ uuid ] = doc
-   //                }
+   //       docs.forEach( function ( doc ) {
+   //          var uuid = doc[ '_id' ]
+   //          if ( ( uuid in vm[ key ] ) ) {
+   //             if ( doc[ '_deleted' ] ) {
+   //                Vue.delete( vm[ key ], uuid )
    //             }
    //             else {
-   //                if ( doc[ '_deleted' ] ) {
-   //                   Vue.delete( vm[ key ], uuid )
-   //                }
-   //                else {
-   //                   var obj = vm[ key ]
-   //                   Vue.set( obj, uuid, doc )
-   //                }
+   //                vm[ key ][ uuid ] = doc
    //             }
-   //          } )
+   //          }
+   //          else {
+   //             if ( doc[ '_deleted' ] ) {
+   //                Vue.delete( vm[ key ], uuid )
+   //             }
+   //             else {
+   //                var obj = vm[ key ]
+   //                Vue.set( obj, uuid, doc )
+   //             }
+   //          }
    //       } )
-   // }
+   //    } )
+   //    // }
 
    localDB.allDocs( {
          include_docs: true,
