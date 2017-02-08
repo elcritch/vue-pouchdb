@@ -1,7 +1,7 @@
 var PouchDB = require( 'pouchdb' );
 PouchDB.plugin( require( 'pouchdb-authentication' ) );
 
-import Main from "./Main"
+var Main = require( "./Main" );
 
 // auto install in dist mode
 if ( typeof window !== 'undefined' && window.Vue ) {
