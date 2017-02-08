@@ -124,8 +124,11 @@ function bind( vm, key, source ) {
       } )
       .then( function ( doc ) {
          var objs = {}
-         doc.rows.forEach( d => objs[ d.id ] = d.doc )
-         defineReactive( vm, key, objs )
+         doc.rows.forEach( d => {
+            objs[ d.id ] = d.doc;
+            console.log( "d: ", d.doc );
+         } );
+         defineReactive( vm, key, objs );
       } )
       .catch( function ( err ) {
 
