@@ -4,9 +4,9 @@ var PouchDB = require( 'pouchdb' );
 var main = require( "./main" );
 
 // auto install in dist mode
-if ( typeof window !== 'undefined' && window.Vue ) {
-   install( window.Vue )
-}
+// if ( typeof window !== 'undefined' && window.Vue ) {
+//    install( window.Vue )
+// }
 
 
 /**
