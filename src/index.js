@@ -14,7 +14,7 @@ var main = require( "./main" );
  **/
 
 function install( Vue ) {
-   console.log( "Vue PouchDB install" )
+   console.log( "Vue PouchDB install", main )
    Vue.mixin( main.PouchMixin )
 }
 
