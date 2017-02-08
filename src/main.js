@@ -1,5 +1,4 @@
-var uuidV4 = require( 'uuid/v4' );
-var uuidV1 = require( 'uuid/v1' );
+var uuidModule = require( 'uuid' );
 
 var init = function () {
    var bindings = this.$options.pouchdb
@@ -33,7 +32,7 @@ function bind( vm, key, source ) {
    vm.$db[ key ] = localDB
 
    vm.$db[ key ].put = function ( data, id ) {
-      var _id = id || uuidV1()
+      var _id = id || uuidModule.v1();
       data[ '_id' ] = _id
 
       return new Promise( function ( resolve, reject ) {
