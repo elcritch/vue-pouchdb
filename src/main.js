@@ -26,7 +26,7 @@ function defineReactive( vm, key, val ) {
 
 function bind( vm, key, source ) {
    var array = []
-   defineReactive( vm, key, array )
+   defineReactive( vm, key, {} )
    var localDB = new PouchDB( source.localdb );
 
    // var remoteDB = new PouchDB( source.remoteURL );
@@ -89,36 +89,32 @@ function bind( vm, key, source ) {
    // if ( remoteDB.active === true ) {
    localDB.changes( {
          since: 0,
-         live: true
+         live: true,
+         include_docs: true
       } )
       .on( 'change', function ( change ) {
 
-         var docs = change.change.docs
-            // TODO: Refactor docs check
-         console.log( "SYNC: ", change )
+         var docs = change.changes.docs || [ change.doc ];
+
+         // TODO: Refactor docs check
+         // console.log( "SYNC: ", change, docs )
 
          docs.forEach( function ( doc ) {
             var uuid = doc[ '_id' ]
-            if ( ( uuid in vm[ key ] ) ) {
-               if ( doc[ '_deleted' ] ) {
-                  Vue.delete( vm[ key ], uuid )
-               }
-               else {
-                  vm[ key ][ uuid ] = doc
-               }
+            if ( doc[ '_deleted' ] ) {
+               Vue.delete( vm[ key ], uuid )
             }
             else {
-               if ( doc[ '_deleted' ] ) {
-                  Vue.delete( vm[ key ], uuid )
-               }
-               else {
-                  var obj = vm[ key ]
-                  Vue.set( obj, uuid, doc )
-               }
+               console.log( "SYNC: ", doc, vm[ key ][ uuid ] )
+                  // vm[ key ][ uuid ] = doc
+               Vue.set( vm[ key ], uuid, doc );
+               console.log( "SYNC:post: ", vm[ key ][ uuid ] )
+                  // defineReactive( vm, uuid, doc );
+                  // var uuid = doc[ '_id' ]
             }
          } )
-      } )
-      // }
+      } );
+   // }
 
    localDB.allDocs( {
          include_docs: true,
@@ -127,8 +123,8 @@ function bind( vm, key, source ) {
       .then( function ( doc ) {
          var objs = {}
          doc.rows.forEach( d => {
-            objs[ d.id ] = d.doc;
-            console.log( "d: ", d.doc );
+            objs[ d._id ] = d.doc;
+            console.log( "d: ", d );
          } );
          defineReactive( vm, key, objs );
       } )
