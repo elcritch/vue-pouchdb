@@ -17,9 +17,12 @@ if ( typeof window !== 'undefined' && window.Vue ) {
 //    Vue.mixin( main.PouchMixin )
 // }
 
-var PouchMixin = main.PouchMixin;
+var PouchMixin = main.Pouch
 
-export default VuePouchDb;
+export default {
+   PouchMixin,
+   install
+}
 
 // exports.install = function ( Vue, options ) {
 //    Vue.prototype.$db = new PouchDB( options );
