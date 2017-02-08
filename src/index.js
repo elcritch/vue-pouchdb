@@ -14,6 +14,7 @@ if ( typeof window !== 'undefined' && window.Vue ) {
  **/
 
 function install( Vue ) {
+   console.log( "Vue PouchDB install" )
    Vue.mixin( main.PouchMixin )
 }
 
