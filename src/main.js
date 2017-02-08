@@ -146,6 +146,4 @@ var PouchMixin = {
 // }
 
 
-export default {
-   install
-}
+// export default PouchMixin
