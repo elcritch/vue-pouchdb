@@ -1,5 +1,5 @@
-import uuidV4 from 'uuid/v4'
-import uuidV1 from 'uuid/v1'
+var uuidV4 = require( 'uuid/v4' );
+var uuidV1 = require( 'uuid/v1' );
 
 var init = function () {
    var bindings = this.$options.pouchdb
