@@ -1,4 +1,5 @@
 var uuidModule = require( 'uuid' );
+var PouchDB = require( 'pouchdb' );
 
 var init = function () {
    var bindings = this.$options.pouchdb
