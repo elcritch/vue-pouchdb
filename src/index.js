@@ -1,7 +1,7 @@
 var PouchDB = require( 'pouchdb' );
 PouchDB.plugin( require( 'pouchdb-authentication' ) );
 
-var Main = require( "./Main" );
+var main = require( "./main" );
 
 // auto install in dist mode
 if ( typeof window !== 'undefined' && window.Vue ) {
@@ -14,7 +14,7 @@ if ( typeof window !== 'undefined' && window.Vue ) {
  **/
 
 function install( Vue ) {
-   Vue.mixin( Main.PouchMixin )
+   Vue.mixin( main.PouchMixin )
 }
 
 
